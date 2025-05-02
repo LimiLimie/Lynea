@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #2b2b2b; /* Soft dark background */
+      background-color: #2b2b2b;
       color: #e0e0e0;
       display: flex;
       justify-content: center;
@@ -27,13 +27,14 @@
     }
 
     .main-content {
-      background: #383838; /* Slightly lighter than background */
+      background: #383838;
       padding: 40px;
       width: 100%;
       max-width: 100%;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       margin-bottom: 40px;
+      position: relative;
     }
 
     .main-content header {
@@ -60,6 +61,26 @@
       opacity: 0.9;
     }
 
+    .play-store-link {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .play-store-link a {
+      background-color: #ef6c00;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    .play-store-link a:hover {
+      background-color: #bf360c;
+    }
+
     .guide-nav {
       display: flex;
       justify-content: center;
@@ -68,7 +89,7 @@
 
     .guide-nav a {
       display: inline-block;
-      background: #ef6c00; /* Darker orange */
+      background: #ef6c00;
       color: #fff;
       padding: 12px 30px;
       font-size: 1.1rem;
@@ -79,16 +100,16 @@
     }
 
     .guide-nav a:hover {
-      background: #bf360c; /* Even darker orange on hover */
+      background: #bf360c;
       transform: translateY(-3px);
     }
 
     section {
-      background: #444; /* Content sections */
+      background: #444;
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 10px;
-      border-left: 5px solid #ef6c00; /* Accent line */
+      border-left: 5px solid #ef6c00;
     }
 
     section h2 {
@@ -117,6 +138,10 @@
         border-radius: 0;
       }
 
+      .play-store-link {
+        justify-content: center;
+      }
+
       .guide-nav {
         flex-direction: column;
       }
@@ -139,6 +164,9 @@
 <body>
   <div class="container">
     <div class="main-content">
+      <div class="play-store-link">
+        <a href="#" title="Coming Soon">Play Store (Coming Soon)</a>
+      </div>
       <header>
         <h1>Lynea</h1>
         <h2>KLWP Theme Guide</h2>
