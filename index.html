@@ -160,36 +160,38 @@
       }
     }
 
-    /* Back to Top Button with Arrow */
+    /* Back to Top Arrow Button */
     .back-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
+      width: 60px;
+      height: 60px;
       background-color: #ef6c00;
-      padding: 15px;
       color: white;
       border-radius: 50%;
-      font-size: 2rem;
+      text-align: center;
+      line-height: 60px;
+      font-size: 1.8rem;
+      font-weight: bold;
       text-decoration: none;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .back-to-top:hover {
       background-color: #bf360c;
+      transform: translateY(-3px);
     }
 
-    .back-to-top:before {
-      content: '↑';  /* Unicode character for up arrow */
-      font-size: 1.5rem;
+    .back-to-top::before {
+      content: "▲"; /* Bolder up arrow */
+      display: block;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div id="top" class="container">
     <div class="main-content">
       <div class="play-store-link">
         <a href="#" title="Coming Soon">Play Store (Coming Soon)</a>
@@ -221,12 +223,10 @@
           KLWP's editor and personalize your setup.
         </p>
       </section>
-
-      <!-- Back to Top Button with Arrow -->
-      <div class="back-to-top">
-        <a href="#top"></a>
-      </div>
     </div>
   </div>
+
+  <!-- Back to Top Arrow Button -->
+  <a href="#top" class="back-to-top" title="Back to Top"></a>
 </body>
 </html>
