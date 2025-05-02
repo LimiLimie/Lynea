@@ -8,32 +8,31 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #b0bec5; /* Darker light blue-grey background */
+      background-color: #b0bec5; /* Slightly darker blue-grey background */
       color: #333;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 0; /* Remove padding */
+      padding: 0;
     }
 
     .container {
       display: flex;
       flex-direction: column;
-      max-width: 100%; /* Full width */
+      max-width: 100%;
       width: 100%;
-      margin-top: 0; /* Remove top margin */
-      padding: 0; /* Remove container padding */
+      margin-top: 0;
+      padding: 0;
     }
 
-    /* Main Content Area */
     .main-content {
-      background: #f0f4f8; /* Darker content background */
+      background: #f0f4f8; /* Slightly darker light content background */
       padding: 40px;
       width: 100%;
-      max-width: 100%; /* Make sure it stretches to full width */
+      max-width: 100%;
       border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       margin-bottom: 40px;
     }
 
@@ -43,26 +42,24 @@
     }
 
     .main-content h1 {
-      font-size: 3.5rem; /* Larger font size for the title */
-      color: #0d47a1; /* Dark blue color */
-      margin: 0; /* Remove margin */
+      font-size: 3.5rem;
+      color: #0d47a1;
+      margin: 0;
     }
 
     .main-content h2 {
-      font-size: 1.8rem; /* Smaller size for the subtitle */
-      color: #0d47a1; /* Dark blue color */
+      font-size: 1.8rem;
+      color: #0d47a1;
       margin-top: 10px;
-      opacity: 0.9; /* Slightly darker */
     }
 
     .subtitle {
       margin-top: 10px;
       font-size: 1.1rem;
       color: #666;
-      opacity: 0.9; /* Darken subtitle color */
+      opacity: 0.9;
     }
 
-    /* Guide Navigation */
     .guide-nav {
       display: flex;
       justify-content: center;
@@ -71,7 +68,7 @@
 
     .guide-nav a {
       display: inline-block;
-      background: #00796b; /* Darker teal background */
+      background: #f57c00; /* Orange */
       color: #fff;
       padding: 12px 30px;
       font-size: 1.1rem;
@@ -82,17 +79,16 @@
     }
 
     .guide-nav a:hover {
-      background: #004d40; /* Even darker teal on hover */
-      transform: translateY(-3px); /* Slight lift on hover */
+      background: #e65100; /* Darker orange */
+      transform: translateY(-3px);
     }
 
-    /* Section Styles */
     section {
-      background: #e0e4e9; /* Darker grey background */
+      background: #e0e4e9; /* Slightly darker section background */
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 10px;
-      border-left: 5px solid #0d47a1; /* Accent color on left */
+      border-left: 5px solid #0d47a1;
     }
 
     section h2 {
@@ -106,20 +102,19 @@
       line-height: 1.6;
     }
 
-    /* Responsive Design for Mobile */
     @media (max-width: 768px) {
       body {
-        padding: 0; /* Remove body padding */
+        padding: 0;
       }
 
       .container {
-        padding: 10px; /* Add slight padding for smaller screens */
+        padding: 10px;
       }
 
       .main-content {
-        padding: 20px; /* Adjust padding for mobile */
+        padding: 20px;
         margin-bottom: 0;
-        border-radius: 0; /* Remove rounded corners for mobile */
+        border-radius: 0;
       }
 
       .guide-nav {
@@ -127,45 +122,48 @@
       }
 
       .guide-nav a {
-        margin-bottom: 15px; /* Space out buttons in mobile view */
+        margin-bottom: 15px;
       }
 
       section {
-        padding: 15px; /* Adjust padding for mobile */
+        padding: 15px;
         margin-bottom: 20px;
       }
 
       .main-content h1 {
-        font-size: 2.5rem; /* Adjust heading size for mobile */
+        font-size: 2.5rem;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Main Content -->
     <div class="main-content">
       <header>
-        <h1>Lynea</h1> <!-- Title -->
-        <h2>KLWP Theme Guide</h2> <!-- Subtitle -->
-        <p class="subtitle">Modern, Customizable, Elegance</p> <!-- Trademark -->
+        <h1>Lynea</h1>
+        <h2>KLWP Theme Guide</h2>
+        <p class="subtitle">Modern, Customizable, Elegance</p>
       </header>
 
-      <!-- Guide Navigation -->
       <div class="guide-nav">
         <a href="#intro">Introduction</a>
         <a href="#customization">Customization</a>
       </div>
 
-      <!-- Sections -->
       <section id="intro">
         <h2>Introduction</h2>
-        <p>Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach, focusing on modern usability and customization for your home screen.</p>
+        <p>
+          Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach,
+          focusing on modern usability and customization for your home screen.
+        </p>
       </section>
 
       <section id="customization">
         <h2>Customization</h2>
-        <p>Adjust colors, fonts, and add modules to make the theme truly yours. Learn how to make changes in KLWP's editor and personalize your setup.</p>
+        <p>
+          Adjust colors, fonts, and add modules to make the theme truly yours. Learn how to make changes in
+          KLWP's editor and personalize your setup.
+        </p>
       </section>
     </div>
   </div>
