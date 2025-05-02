@@ -160,23 +160,31 @@
       }
     }
 
-    /* Back to Top Button */
+    /* Back to Top Button with Arrow */
     .back-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background-color: #ef6c00;
-      padding: 10px 20px;
+      padding: 15px;
       color: white;
       border-radius: 50%;
-      font-size: 1.2rem;
+      font-size: 2rem;
       text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease;
     }
 
     .back-to-top:hover {
       background-color: #bf360c;
+    }
+
+    .back-to-top:before {
+      content: '↑';  /* Unicode character for up arrow */
+      font-size: 1.5rem;
     }
   </style>
 </head>
@@ -214,9 +222,9 @@
         </p>
       </section>
 
-      <!-- Back to Top Button -->
+      <!-- Back to Top Button with Arrow -->
       <div class="back-to-top">
-        <a href="#top">Back to Top</a>
+        <a href="#top"></a>
       </div>
     </div>
   </div>
