@@ -17,93 +17,150 @@
       padding: 20px;
     }
 
-    header {
+    .container {
+      display: flex;
+      flex-direction: row;
+      max-width: 1200px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* Sidebar */
+    .sidebar {
       background: #f7f7f7;
+      width: 250px;
       border-radius: 20px;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 30px;
+      margin-right: 20px;
       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul li a {
+      color: #81d4fa;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      color: #4fc3f7;
+    }
+
+    /* Main Content Area */
+    .main-content {
+      background: #f4f4f4;
+      padding: 40px;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .main-content header {
+      text-align: center;
       margin-bottom: 40px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 2.4rem;
+    .main-content h1 {
+      font-size: 2.5rem;
       color: #444;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
     }
 
     .subtitle {
       margin-top: 10px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #666;
-      opacity: 0.7;
     }
 
-    main {
-      background-color: #f4f4f4;
-      padding: 30px;
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 20px;
-      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.6);
-    }
-
-    section {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 15px;
+    .main-content section {
       background: #e7e7e7;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 15px;
       box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1), inset -4px -4px 8px rgba(255, 255, 255, 0.6);
     }
 
-    h2 {
+    .main-content h2 {
+      font-size: 1.6rem;
       color: #444;
-      font-size: 1.5rem;
       margin-bottom: 10px;
     }
 
-    p {
+    .main-content p {
       color: #555;
       line-height: 1.6;
     }
 
-    a {
-      color: #81d4fa;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
       }
 
-      main {
-        padding: 20px;
+      .sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .main-content {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Lynea – KLWP Theme Guide</h1>
-    <p class="subtitle">Minimal. Customizable. Neumorphic elegance.</p>
-  </header>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Guide Navigation</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#customization">Customization</a></li>
+        <li><a href="#tips">Tips & Tricks</a></li>
+      </ul>
+    </div>
 
-  <main>
-    <section>
-      <h2>Introduction</h2>
-      <p>Welcome to the Lynea KLWP theme guide. This theme is designed to be minimal and modern with a soft neumorphic touch.</p>
-    </section>
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>Lynea – KLWP Theme Guide</h1>
+        <p class="subtitle">Minimal. Customizable. Neumorphic elegance.</p>
+      </header>
 
-    <section>
-      <h2>Customization</h2>
-      <p>Instructions on how to adjust colors, fonts, and modules will go here.</p>
-    </section>
-  </main>
+      <!-- Sections -->
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>Welcome to the Lynea KLWP theme guide. This theme is designed with a soft neumorphic touch, creating a clean, modern, and customizable look for your home screen.</p>
+      </section>
+
+      <section id="customization">
+        <h2>Customization</h2>
+        <p>Adjust colors, fonts, and add modules to make the theme truly yours. Learn how to make changes in KLWP's editor.</p>
+      </section>
+
+      <section id="tips">
+        <h2>Tips & Tricks</h2>
+        <p>Get the most out of your Lynea theme with these handy tips and tricks. Make your setup more unique and functional.</p>
+      </section>
+    </div>
+  </div>
 </body>
 </html>
