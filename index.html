@@ -122,17 +122,22 @@
       transform: translateY(-3px);
     }
 
+    .guide-nav a.active {
+      background: #C76D00;
+      color: #ffffff;
+    }
+
     section {
       background: #464b57;
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 10px;
       border-left: 5px solid #C76D00;
-      display: none; /* Hidden by default */
+      display: none;
     }
 
     section.active {
-      display: block; /* Only the active section is shown */
+      display: block;
     }
 
     section h2 {
@@ -223,8 +228,8 @@
       </header>
 
       <div class="guide-nav">
-        <a onclick="showSection('intro')">Introduction</a>
-        <a onclick="showSection('customization')">Customization</a>
+        <a id="btn-intro" class="active" onclick="showSection('intro', this)">Introduction</a>
+        <a id="btn-customization" onclick="showSection('customization', this)">Customization</a>
       </div>
 
       <section id="intro" class="active">
@@ -245,16 +250,19 @@
     </div>
   </div>
 
-  <!-- Back to Top Arrow Button -->
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
   <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
+    function showSection(id, el) {
+      document.querySelectorAll('section').forEach(section => {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('.guide-nav a').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      el.classList.add('active');
     }
   </script>
 </body>
