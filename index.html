@@ -96,19 +96,29 @@
 
     .guide-nav {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 10px;
       margin-top: 30px;
+      justify-content: flex-start;
+    }
+
+    .guide-nav::-webkit-scrollbar {
+      display: none;
     }
 
     .guide-nav a {
+      white-space: nowrap;
+      flex: 0 0 auto;
       background: transparent;
       color: #ffffff;
       padding: 12px 30px;
       font-size: 1.1rem;
       border-radius: 50px;
       text-decoration: none;
-      margin: 10px 10px;
+      margin: 10px 8px;
       border: 2px solid #C76D00;
       transition: background 0.3s, color 0.3s, transform 0.3s;
       cursor: pointer;
