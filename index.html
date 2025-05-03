@@ -96,13 +96,13 @@
 
     .guide-nav {
       display: flex;
+      justify-content: center;
       flex-wrap: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 0 10px;
       margin-top: 30px;
-      justify-content: flex-start;
+      padding: 0 10px;
     }
 
     .guide-nav::-webkit-scrollbar {
@@ -124,15 +124,23 @@
       cursor: pointer;
     }
 
-    .guide-nav a:hover {
-      background: #C76D00;
-      color: #ffffff;
-      transform: translateY(-3px);
-    }
-
+    .guide-nav a:hover,
     .guide-nav a.active {
       background: #C76D00;
       color: #ffffff;
+    }
+
+    /* Dropdown for mobile */
+    .guide-dropdown {
+      display: none;
+      margin: 20px auto;
+      max-width: 90%;
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 10px;
+      background: #464b57;
+      color: #ffffff;
+      border: 2px solid #C76D00;
     }
 
     section {
@@ -185,6 +193,16 @@
       content: "↑";
       display: block;
     }
+
+    @media (max-width: 768px) {
+      .guide-nav {
+        display: none;
+      }
+
+      .guide-dropdown {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -201,6 +219,7 @@
         <img src="lynea-mockup.png" alt="Lynea Theme Mockup" class="theme-image" loading="lazy" />
       </header>
 
+      <!-- Desktop Buttons -->
       <div class="guide-nav">
         <a class="active" onclick="showSection('intro', this)">Introduction</a>
         <a onclick="showSection('wallpaper', this)">Wallpaper</a>
@@ -208,6 +227,15 @@
         <a onclick="showSection('apps', this)">Applications</a>
         <a onclick="showSection('touch', this)">Touch Actions</a>
       </div>
+
+      <!-- Mobile Dropdown -->
+      <select class="guide-dropdown" onchange="showSection(this.value, this)">
+        <option value="intro">Introduction</option>
+        <option value="wallpaper">Wallpaper</option>
+        <option value="accent">Accent Color</option>
+        <option value="apps">Applications</option>
+        <option value="touch">Touch Actions</option>
+      </select>
 
       <section id="intro" class="active">
         <h2>Introduction</h2>
@@ -246,9 +274,27 @@
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
 
-      document.querySelectorAll('.guide-nav a').forEach(a => a.classList.remove('active'));
-      el.classList.add('active');
+      // Handle desktop nav buttons
+      const navLinks = document.querySelectorAll('.guide-nav a');
+      navLinks.forEach(a => a.classList.remove('active'));
+
+      if (el.tagName === 'A') {
+        el.classList.add('active');
+      } else {
+        // Sync dropdown and nav link
+        const selectedValue = el.value;
+        navLinks.forEach(a => {
+          if (a.textContent.replace(/\s+/g, '').toLowerCase() === selectedValue.toLowerCase()) {
+            a.classList.add('active');
+          }
+        });
+      }
     }
+
+    // Default: Show Introduction
+    document.addEventListener("DOMContentLoaded", () => {
+      showSection('intro', document.querySelector('.guide-nav a.active'));
+    });
   </script>
 </body>
 </html>
