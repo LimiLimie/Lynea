@@ -94,14 +94,14 @@
       color: #ffffff;
     }
 
-    .guide-nav, .custom-nav {
+    .guide-nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 30px;
     }
 
-    .guide-nav a, .custom-nav button {
+    .guide-nav a {
       background: transparent;
       color: #ffffff;
       padding: 12px 30px;
@@ -114,13 +114,13 @@
       cursor: pointer;
     }
 
-    .guide-nav a:hover, .custom-nav button:hover {
+    .guide-nav a:hover {
       background: #C76D00;
       color: #ffffff;
       transform: translateY(-3px);
     }
 
-    .guide-nav a.active, .custom-nav button.active {
+    .guide-nav a.active {
       background: #C76D00;
       color: #ffffff;
     }
@@ -135,14 +135,6 @@
     }
 
     section.active {
-      display: block;
-    }
-
-    .sub-section {
-      display: none;
-    }
-
-    .sub-section.active {
       display: block;
     }
 
@@ -201,10 +193,12 @@
 
       <div class="guide-nav">
         <a class="active" onclick="showSection('intro', this)">Introduction</a>
-        <a onclick="showSection('customization', this)">Customization</a>
+        <a onclick="showSection('wallpaper', this)">Wallpaper</a>
+        <a onclick="showSection('accent', this)">Accent Color</a>
+        <a onclick="showSection('apps', this)">Applications</a>
+        <a onclick="showSection('touch', this)">Touch Actions</a>
       </div>
 
-      <!-- Introduction -->
       <section id="intro" class="active">
         <h2>Introduction</h2>
         <p>
@@ -213,32 +207,24 @@
         </p>
       </section>
 
-      <!-- Customization -->
-      <section id="customization">
-        <h2>Customization</h2>
+      <section id="wallpaper">
+        <h2>Wallpaper</h2>
+        <p>Learn how to change and personalize your wallpaper through KLWP layers and image modules.</p>
+      </section>
 
-        <div class="custom-nav">
-          <button onclick="showSub('wallpaper', this)" class="active">Wallpaper</button>
-          <button onclick="showSub('accent', this)">Accent Color</button>
-          <button onclick="showSub('apps', this)">Applications</button>
-          <button onclick="showSub('touch', this)">Touch Actions</button>
-        </div>
+      <section id="accent">
+        <h2>Accent Color</h2>
+        <p>Pick an accent color that suits your vibe. This theme supports quick global color changes.</p>
+      </section>
 
-        <div id="wallpaper" class="sub-section active">
-          <p>Learn how to change and personalize your wallpaper through KLWP layers and image modules.</p>
-        </div>
+      <section id="apps">
+        <h2>Applications</h2>
+        <p>Assign favorite apps to on-screen icons. Use touch triggers and shortcuts within KLWP.</p>
+      </section>
 
-        <div id="accent" class="sub-section">
-          <p>Pick an accent color that suits your vibe. This theme supports quick global color changes.</p>
-        </div>
-
-        <div id="apps" class="sub-section">
-          <p>Assign favorite apps to on-screen icons. Use touch triggers and shortcuts within KLWP.</p>
-        </div>
-
-        <div id="touch" class="sub-section">
-          <p>Customize touch actions, gestures, and what happens when you tap areas of the theme.</p>
-        </div>
+      <section id="touch">
+        <h2>Touch Actions</h2>
+        <p>Customize touch actions, gestures, and what happens when you tap areas of the theme.</p>
       </section>
     </div>
   </div>
@@ -251,14 +237,6 @@
       document.getElementById(id).classList.add('active');
 
       document.querySelectorAll('.guide-nav a').forEach(a => a.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    function showSub(id, el) {
-      document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      document.querySelectorAll('.custom-nav button').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
     }
   </script>
