@@ -113,6 +113,7 @@
       margin: 0 15px;
       border: 2px solid #C76D00;
       transition: background 0.3s, color 0.3s, transform 0.3s;
+      cursor: pointer;
     }
 
     .guide-nav a:hover {
@@ -127,6 +128,11 @@
       margin-bottom: 30px;
       border-radius: 10px;
       border-left: 5px solid #C76D00;
+      display: none; /* Hidden by default */
+    }
+
+    section.active {
+      display: block; /* Only the active section is shown */
     }
 
     section h2 {
@@ -141,10 +147,6 @@
     }
 
     @media (max-width: 768px) {
-      body {
-        padding: 0;
-      }
-
       .container {
         padding: 10px;
       }
@@ -177,7 +179,6 @@
       }
     }
 
-    /* Back to Top Arrow Button */
     .back-to-top {
       position: fixed;
       bottom: 20px;
@@ -222,11 +223,11 @@
       </header>
 
       <div class="guide-nav">
-        <a href="#intro">Introduction</a>
-        <a href="#customization">Customization</a>
+        <a onclick="showSection('intro')">Introduction</a>
+        <a onclick="showSection('customization')">Customization</a>
       </div>
 
-      <section id="intro">
+      <section id="intro" class="active">
         <h2>Introduction</h2>
         <p>
           Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach,
@@ -246,5 +247,15 @@
 
   <!-- Back to Top Arrow Button -->
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
