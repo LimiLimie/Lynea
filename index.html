@@ -59,19 +59,12 @@
       overflow-x: auto;
       gap: 20px;
       padding: 20px 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     .horizontal-scroll-container::-webkit-scrollbar {
-      height: 8px;
-    }
-
-    .horizontal-scroll-container::-webkit-scrollbar-thumb {
-      background-color: #C76D00;
-      border-radius: 5px;
-    }
-
-    .horizontal-scroll-container::-webkit-scrollbar-track {
-      background-color: #464b57;
+      display: none;
     }
 
     .button-item {
@@ -86,6 +79,7 @@
       min-width: 200px;
       text-align: center;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .button-item:hover {
@@ -96,6 +90,25 @@
     .active-button {
       background-color: #C76D00;
       color: white;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #888;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: #C76D00;
     }
 
     .content-section {
@@ -156,12 +169,21 @@
       </header>
 
       <!-- Horizontal Scrollable Section -->
-      <div class="horizontal-scroll-container">
-        <button class="button-item active-button" onclick="toggleContent('intro', this)">Introduction</button>
-        <button class="button-item" onclick="toggleContent('wallpaper', this)">Wallpaper</button>
-        <button class="button-item" onclick="toggleContent('accent', this)">Accent Color</button>
-        <button class="button-item" onclick="toggleContent('apps', this)">Applications</button>
-        <button class="button-item" onclick="toggleContent('touch', this)">Touch Actions</button>
+      <div class="horizontal-scroll-container" id="buttonRow">
+        <button class="button-item active-button" onclick="toggleContent('intro', 0)">Introduction</button>
+        <button class="button-item" onclick="toggleContent('wallpaper', 1)">Wallpaper</button>
+        <button class="button-item" onclick="toggleContent('accent', 2)">Accent Color</button>
+        <button class="button-item" onclick="toggleContent('apps', 3)">Applications</button>
+        <button class="button-item" onclick="toggleContent('touch', 4)">Touch Actions</button>
+      </div>
+
+      <!-- Dots under buttons -->
+      <div class="dots" id="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
       </div>
 
       <!-- Content Sections -->
@@ -195,14 +217,18 @@
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
   <script>
-    function toggleContent(sectionId, btn) {
-      // Toggle content visibility
+    function toggleContent(sectionId, dotIndex) {
+      // Show the content section
       document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
       document.getElementById(sectionId).classList.add('active');
 
-      // Highlight active button
-      document.querySelectorAll('.button-item').forEach(button => button.classList.remove('active-button'));
-      btn.classList.add('active-button');
+      // Highlight the button
+      document.querySelectorAll('.button-item').forEach(btn => btn.classList.remove('active-button'));
+      document.querySelectorAll('.button-item')[dotIndex].classList.add('active-button');
+
+      // Highlight the dot
+      document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+      document.querySelectorAll('.dot')[dotIndex].classList.add('active');
     }
   </script>
 </body>
