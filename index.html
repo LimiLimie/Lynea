@@ -13,6 +13,7 @@
       background-color: #363941;
       color: #e0e0e0;
       height: 100%;
+      scroll-behavior: smooth;
     }
 
     .container {
@@ -130,14 +131,14 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       background-color: rgba(0, 0, 0, 0.6);
       color: white;
       border-radius: 50%;
       text-align: center;
-      line-height: 50px;
-      font-size: 1.5rem;
+      line-height: 60px;
+      font-size: 2rem;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     }
@@ -156,7 +157,7 @@
     }
 
     .playstore-link img {
-      width: 160px;
+      width: 120px;
       height: auto;
       transition: transform 0.3s ease;
     }
@@ -172,6 +173,12 @@
 
       .main-content {
         padding: 20px 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .playstore-link img {
+        width: 100px;
       }
     }
   </style>
