@@ -23,6 +23,7 @@
     .container {
       max-width: 100%;
       width: 100%;
+      padding: 20px;
     }
 
     .main-content {
@@ -64,60 +65,55 @@
       border-radius: 12px;
     }
 
-    .accordion {
-      margin-top: 30px;
+    /* Horizontal Scroll Section */
+    .horizontal-scroll-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding-bottom: 20px;
     }
 
-    .accordion-button {
-      width: 100%;
+    .horizontal-scroll-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar-thumb {
+      background-color: #C76D00;
+      border-radius: 5px;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar-track {
+      background-color: #464b57;
+    }
+
+    .button-item {
       background-color: transparent;
       color: white;
-      padding: 15px 20px;
-      text-align: left;
-      font-size: 1.1rem;
       border: 2px solid #C76D00;
+      padding: 15px 20px;
+      font-size: 1.1rem;
       border-radius: 10px;
-      margin-bottom: 10px;
       cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-width: 200px;
+      text-align: center;
     }
 
-    .accordion-button:hover,
-    .accordion-button.active {
+    .button-item:hover {
       background-color: #C76D00;
-    }
-
-    .accordion-button span {
-      font-size: 1.5rem;
-    }
-
-    .accordion-content {
-      background: #464b57;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .accordion-content.open {
-      padding: 20px;
-      max-height: 500px; /* adjust as needed */
-    }
-
-    .accordion-content h3 {
-      margin-top: 0;
-      font-size: 1.4rem;
       color: white;
     }
 
-    .accordion-content p {
-      color: #ccc;
-      line-height: 1.6;
+    .content-section {
+      display: none;
+      background-color: #464b57;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .content-section.active {
+      display: block;
     }
 
     .back-to-top {
@@ -145,9 +141,12 @@
     }
 
     @media (max-width: 768px) {
+      .button-item {
+        min-width: 150px;
+      }
+
       .main-content {
         padding: 20px;
-        border-radius: 0;
       }
     }
   </style>
@@ -162,49 +161,39 @@
         <img src="lynea-mockup.png" alt="Lynea Theme" class="theme-image" loading="lazy" />
       </header>
 
-      <div class="accordion">
-        <button class="accordion-button active" onclick="toggleAccordion(this, 'intro')">
-          Introduction <span>−</span>
-        </button>
-        <div id="intro" class="accordion-content open">
-          <h3>Introduction</h3>
-          <p>
-            Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach,
-            focusing on modern usability and customization for your home screen.
-          </p>
-        </div>
+      <!-- Horizontal Scrollable Section for Customization -->
+      <div class="horizontal-scroll-container">
+        <button class="button-item" onclick="toggleContent('intro')">Introduction</button>
+        <button class="button-item" onclick="toggleContent('wallpaper')">Wallpaper</button>
+        <button class="button-item" onclick="toggleContent('accent')">Accent Color</button>
+        <button class="button-item" onclick="toggleContent('apps')">Applications</button>
+        <button class="button-item" onclick="toggleContent('touch')">Touch Actions</button>
+      </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'wallpaper')">
-          Wallpaper <span>+</span>
-        </button>
-        <div id="wallpaper" class="accordion-content">
-          <h3>Wallpaper</h3>
-          <p>Learn how to change and personalize your wallpaper using KLWP image modules.</p>
-        </div>
+      <!-- Content Sections -->
+      <div id="intro" class="content-section active">
+        <h3>Introduction</h3>
+        <p>Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach, focusing on modern usability and customization for your home screen.</p>
+      </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'accent')">
-          Accent Color <span>+</span>
-        </button>
-        <div id="accent" class="accordion-content">
-          <h3>Accent Color</h3>
-          <p>Customize the accent color to match your theme's aesthetic using KLWP globals.</p>
-        </div>
+      <div id="wallpaper" class="content-section">
+        <h3>Wallpaper</h3>
+        <p>Learn how to change and personalize your wallpaper using KLWP image modules.</p>
+      </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'apps')">
-          Applications <span>+</span>
-        </button>
-        <div id="apps" class="accordion-content">
-          <h3>Applications</h3>
-          <p>Assign apps to touch zones and icons for easy access from the home screen.</p>
-        </div>
+      <div id="accent" class="content-section">
+        <h3>Accent Color</h3>
+        <p>Customize the accent color to match your theme's aesthetic using KLWP globals.</p>
+      </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'touch')">
-          Touch Actions <span>+</span>
-        </button>
-        <div id="touch" class="accordion-content">
-          <h3>Touch Actions</h3>
-          <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
-        </div>
+      <div id="apps" class="content-section">
+        <h3>Applications</h3>
+        <p>Assign apps to touch zones and icons for easy access from the home screen.</p>
+      </div>
+
+      <div id="touch" class="content-section">
+        <h3>Touch Actions</h3>
+        <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
       </div>
     </div>
   </div>
@@ -212,22 +201,14 @@
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
   <script>
-    function toggleAccordion(button, id) {
-      const allButtons = document.querySelectorAll('.accordion-button');
-      const allContents = document.querySelectorAll('.accordion-content');
+    function toggleContent(sectionId) {
+      // Hide all sections
+      const allSections = document.querySelectorAll('.content-section');
+      allSections.forEach(section => section.classList.remove('active'));
 
-      allButtons.forEach(btn => btn.classList.remove('active'));
-      allContents.forEach(content => {
-        content.classList.remove('open');
-        content.style.maxHeight = null;
-      });
-
-      const content = document.getElementById(id);
-      const icon = button.querySelector('span');
-
-      button.classList.add('active');
-      content.classList.add('open');
-      icon.textContent = icon.textContent === '−' ? '+' : '−';
+      // Show the clicked section
+      const sectionToShow = document.getElementById(sectionId);
+      sectionToShow.classList.add('active');
     }
   </script>
 </body>
