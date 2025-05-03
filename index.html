@@ -79,12 +79,19 @@
       border-radius: 10px;
       margin-bottom: 10px;
       cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       transition: background 0.3s ease;
     }
 
     .accordion-button:hover,
     .accordion-button.active {
       background-color: #C76D00;
+    }
+
+    .accordion-button span {
+      font-size: 1.5rem;
     }
 
     .accordion-content {
@@ -156,7 +163,9 @@
       </header>
 
       <div class="accordion">
-        <button class="accordion-button active" onclick="toggleAccordion(this, 'intro')">Introduction</button>
+        <button class="accordion-button active" onclick="toggleAccordion(this, 'intro')">
+          Introduction <span>−</span>
+        </button>
         <div id="intro" class="accordion-content open">
           <h3>Introduction</h3>
           <p>
@@ -165,25 +174,33 @@
           </p>
         </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'wallpaper')">Wallpaper</button>
+        <button class="accordion-button" onclick="toggleAccordion(this, 'wallpaper')">
+          Wallpaper <span>+</span>
+        </button>
         <div id="wallpaper" class="accordion-content">
           <h3>Wallpaper</h3>
           <p>Learn how to change and personalize your wallpaper using KLWP image modules.</p>
         </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'accent')">Accent Color</button>
+        <button class="accordion-button" onclick="toggleAccordion(this, 'accent')">
+          Accent Color <span>+</span>
+        </button>
         <div id="accent" class="accordion-content">
           <h3>Accent Color</h3>
           <p>Customize the accent color to match your theme's aesthetic using KLWP globals.</p>
         </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'apps')">Applications</button>
+        <button class="accordion-button" onclick="toggleAccordion(this, 'apps')">
+          Applications <span>+</span>
+        </button>
         <div id="apps" class="accordion-content">
           <h3>Applications</h3>
           <p>Assign apps to touch zones and icons for easy access from the home screen.</p>
         </div>
 
-        <button class="accordion-button" onclick="toggleAccordion(this, 'touch')">Touch Actions</button>
+        <button class="accordion-button" onclick="toggleAccordion(this, 'touch')">
+          Touch Actions <span>+</span>
+        </button>
         <div id="touch" class="accordion-content">
           <h3>Touch Actions</h3>
           <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
@@ -206,8 +223,11 @@
       });
 
       const content = document.getElementById(id);
+      const icon = button.querySelector('span');
+
       button.classList.add('active');
       content.classList.add('open');
+      icon.textContent = icon.textContent === '−' ? '+' : '−';
     }
   </script>
 </body>
