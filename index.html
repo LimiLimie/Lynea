@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lynea KLWP Guide</title>
-  <meta name="description" content="Official guide for the Lynea KLWP theme – modern, customizable, and elegant." />
   <style>
     html {
       scroll-behavior: smooth;
@@ -19,12 +18,9 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 0;
     }
 
     .container {
-      display: flex;
-      flex-direction: column;
       max-width: 100%;
       width: 100%;
     }
@@ -32,12 +28,10 @@
     .main-content {
       background: #363941;
       padding: 40px;
-      width: 100%;
-      max-width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      margin-bottom: 40px;
-      position: relative;
     }
 
     .main-content header {
@@ -46,7 +40,7 @@
     }
 
     .main-content h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       color: #ffffff;
       margin: 0;
     }
@@ -54,14 +48,12 @@
     .main-content h2 {
       font-size: 1.8rem;
       color: #f5f5f5;
-      margin-top: 10px;
     }
 
     .subtitle {
       margin-top: 10px;
       font-size: 1.1rem;
       color: #bdbdbd;
-      opacity: 0.9;
     }
 
     .theme-image {
@@ -72,96 +64,51 @@
       border-radius: 12px;
     }
 
-    .play-store-link {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-    }
-
-    .play-store-link a {
-      background-color: transparent;
-      color: #ffffff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 30px;
-      font-size: 0.95rem;
-      border: 2px solid #C76D00;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    .play-store-link a:hover {
-      background-color: #C76D00;
-      color: #ffffff;
-    }
-
-    .guide-nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+    .accordion {
       margin-top: 30px;
-      padding: 0 10px;
     }
 
-    .guide-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .guide-nav a {
-      white-space: nowrap;
-      flex: 0 0 auto;
-      background: transparent;
-      color: #ffffff;
-      padding: 12px 30px;
+    .accordion-button {
+      width: 100%;
+      background-color: transparent;
+      color: white;
+      padding: 15px 20px;
+      text-align: left;
       font-size: 1.1rem;
-      border-radius: 50px;
-      text-decoration: none;
-      margin: 10px 8px;
       border: 2px solid #C76D00;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-      cursor: pointer;
-    }
-
-    .guide-nav a:hover,
-    .guide-nav a.active {
-      background: #C76D00;
-      color: #ffffff;
-    }
-
-    /* Dropdown for mobile */
-    .guide-dropdown {
-      display: none;
-      margin: 20px auto;
-      max-width: 90%;
-      font-size: 1rem;
-      padding: 10px;
       border-radius: 10px;
-      background: #464b57;
-      color: #ffffff;
-      border: 2px solid #C76D00;
-    }
-
-    section {
-      background: #464b57;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      border-left: 5px solid #C76D00;
-      display: none;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    section h2 {
-      font-size: 1.8rem;
       margin-bottom: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    section p {
+    .accordion-button:hover,
+    .accordion-button.active {
+      background-color: #C76D00;
+    }
+
+    .accordion-content {
+      background: #464b57;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-content.open {
+      padding: 20px;
+      max-height: 500px; /* adjust as needed */
+    }
+
+    .accordion-content h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: white;
+    }
+
+    .accordion-content p {
       color: #ccc;
       line-height: 1.6;
     }
@@ -178,123 +125,90 @@
       text-align: center;
       line-height: 60px;
       font-size: 2rem;
-      font-weight: bold;
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .back-to-top:hover {
       background-color: rgba(34, 34, 34, 0.6);
-      transform: translateY(-3px);
     }
 
     .back-to-top::before {
       content: "↑";
-      display: block;
     }
 
     @media (max-width: 768px) {
-      .guide-nav {
-        display: none;
-      }
-
-      .guide-dropdown {
-        display: block;
+      .main-content {
+        padding: 20px;
+        border-radius: 0;
       }
     }
   </style>
 </head>
 <body>
-  <div id="top" class="container">
+  <div class="container" id="top">
     <div class="main-content">
-      <div class="play-store-link">
-        <a href="#" title="Coming Soon">Play Store (Coming Soon)</a>
-      </div>
-
       <header>
         <h1>Lynea</h1>
         <h2>KLWP Theme Guide</h2>
         <p class="subtitle">Modern, Customizable, Elegance</p>
-        <img src="lynea-mockup.png" alt="Lynea Theme Mockup" class="theme-image" loading="lazy" />
+        <img src="lynea-mockup.png" alt="Lynea Theme" class="theme-image" loading="lazy" />
       </header>
 
-      <!-- Desktop Buttons -->
-      <div class="guide-nav">
-        <a class="active" onclick="showSection('intro', this)">Introduction</a>
-        <a onclick="showSection('wallpaper', this)">Wallpaper</a>
-        <a onclick="showSection('accent', this)">Accent Color</a>
-        <a onclick="showSection('apps', this)">Applications</a>
-        <a onclick="showSection('touch', this)">Touch Actions</a>
+      <div class="accordion">
+        <button class="accordion-button active" onclick="toggleAccordion(this, 'intro')">Introduction</button>
+        <div id="intro" class="accordion-content open">
+          <h3>Introduction</h3>
+          <p>
+            Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach,
+            focusing on modern usability and customization for your home screen.
+          </p>
+        </div>
+
+        <button class="accordion-button" onclick="toggleAccordion(this, 'wallpaper')">Wallpaper</button>
+        <div id="wallpaper" class="accordion-content">
+          <h3>Wallpaper</h3>
+          <p>Learn how to change and personalize your wallpaper using KLWP image modules.</p>
+        </div>
+
+        <button class="accordion-button" onclick="toggleAccordion(this, 'accent')">Accent Color</button>
+        <div id="accent" class="accordion-content">
+          <h3>Accent Color</h3>
+          <p>Customize the accent color to match your theme's aesthetic using KLWP globals.</p>
+        </div>
+
+        <button class="accordion-button" onclick="toggleAccordion(this, 'apps')">Applications</button>
+        <div id="apps" class="accordion-content">
+          <h3>Applications</h3>
+          <p>Assign apps to touch zones and icons for easy access from the home screen.</p>
+        </div>
+
+        <button class="accordion-button" onclick="toggleAccordion(this, 'touch')">Touch Actions</button>
+        <div id="touch" class="accordion-content">
+          <h3>Touch Actions</h3>
+          <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
+        </div>
       </div>
-
-      <!-- Mobile Dropdown -->
-      <select class="guide-dropdown" onchange="showSection(this.value, this)">
-        <option value="intro">Introduction</option>
-        <option value="wallpaper">Wallpaper</option>
-        <option value="accent">Accent Color</option>
-        <option value="apps">Applications</option>
-        <option value="touch">Touch Actions</option>
-      </select>
-
-      <section id="intro" class="active">
-        <h2>Introduction</h2>
-        <p>
-          Welcome to the Lynea KLWP theme guide. This theme is designed with a clean and minimalist approach,
-          focusing on modern usability and customization for your home screen.
-        </p>
-      </section>
-
-      <section id="wallpaper">
-        <h2>Wallpaper</h2>
-        <p>Learn how to change and personalize your wallpaper through KLWP layers and image modules.</p>
-      </section>
-
-      <section id="accent">
-        <h2>Accent Color</h2>
-        <p>Pick an accent color that suits your vibe. This theme supports quick global color changes.</p>
-      </section>
-
-      <section id="apps">
-        <h2>Applications</h2>
-        <p>Assign favorite apps to on-screen icons. Use touch triggers and shortcuts within KLWP.</p>
-      </section>
-
-      <section id="touch">
-        <h2>Touch Actions</h2>
-        <p>Customize touch actions, gestures, and what happens when you tap areas of the theme.</p>
-      </section>
     </div>
   </div>
 
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
   <script>
-    function showSection(id, el) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function toggleAccordion(button, id) {
+      const allButtons = document.querySelectorAll('.accordion-button');
+      const allContents = document.querySelectorAll('.accordion-content');
 
-      // Handle desktop nav buttons
-      const navLinks = document.querySelectorAll('.guide-nav a');
-      navLinks.forEach(a => a.classList.remove('active'));
+      allButtons.forEach(btn => btn.classList.remove('active'));
+      allContents.forEach(content => {
+        content.classList.remove('open');
+        content.style.maxHeight = null;
+      });
 
-      if (el.tagName === 'A') {
-        el.classList.add('active');
-      } else {
-        // Sync dropdown and nav link
-        const selectedValue = el.value;
-        navLinks.forEach(a => {
-          if (a.textContent.replace(/\s+/g, '').toLowerCase() === selectedValue.toLowerCase()) {
-            a.classList.add('active');
-          }
-        });
-      }
+      const content = document.getElementById(id);
+      button.classList.add('active');
+      content.classList.add('open');
     }
-
-    // Default: Show Introduction
-    document.addEventListener("DOMContentLoaded", () => {
-      showSection('intro', document.querySelector('.guide-nav a.active'));
-    });
   </script>
 </body>
 </html>
