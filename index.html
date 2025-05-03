@@ -54,7 +54,6 @@
       border-radius: 12px;
     }
 
-    /* Horizontal Scroll Section */
     .horizontal-scroll-container {
       display: flex;
       overflow-x: auto;
@@ -90,6 +89,11 @@
     }
 
     .button-item:hover {
+      background-color: #C76D00;
+      color: white;
+    }
+
+    .active-button {
       background-color: #C76D00;
       color: white;
     }
@@ -151,13 +155,13 @@
         <img src="lynea-mockup.png" alt="Lynea Theme" class="theme-image" loading="lazy" />
       </header>
 
-      <!-- Horizontal Scrollable Section for Customization -->
+      <!-- Horizontal Scrollable Section -->
       <div class="horizontal-scroll-container">
-        <button class="button-item" onclick="toggleContent('intro')">Introduction</button>
-        <button class="button-item" onclick="toggleContent('wallpaper')">Wallpaper</button>
-        <button class="button-item" onclick="toggleContent('accent')">Accent Color</button>
-        <button class="button-item" onclick="toggleContent('apps')">Applications</button>
-        <button class="button-item" onclick="toggleContent('touch')">Touch Actions</button>
+        <button class="button-item active-button" onclick="toggleContent('intro', this)">Introduction</button>
+        <button class="button-item" onclick="toggleContent('wallpaper', this)">Wallpaper</button>
+        <button class="button-item" onclick="toggleContent('accent', this)">Accent Color</button>
+        <button class="button-item" onclick="toggleContent('apps', this)">Applications</button>
+        <button class="button-item" onclick="toggleContent('touch', this)">Touch Actions</button>
       </div>
 
       <!-- Content Sections -->
@@ -191,12 +195,14 @@
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
   <script>
-    function toggleContent(sectionId) {
-      const allSections = document.querySelectorAll('.content-section');
-      allSections.forEach(section => section.classList.remove('active'));
+    function toggleContent(sectionId, btn) {
+      // Toggle content visibility
+      document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
 
-      const target = document.getElementById(sectionId);
-      if (target) target.classList.add('active');
+      // Highlight active button
+      document.querySelectorAll('.button-item').forEach(button => button.classList.remove('active-button'));
+      btn.classList.add('active-button');
     }
   </script>
 </body>
