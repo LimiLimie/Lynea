@@ -27,8 +27,6 @@
       flex-direction: column;
       max-width: 100%;
       width: 100%;
-      margin-top: 0;
-      padding: 0;
     }
 
     .main-content {
@@ -96,33 +94,33 @@
       color: #ffffff;
     }
 
-    .guide-nav {
+    .guide-nav, .custom-nav {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       margin-top: 30px;
     }
 
-    .guide-nav a {
-      display: inline-block;
+    .guide-nav a, .custom-nav button {
       background: transparent;
       color: #ffffff;
       padding: 12px 30px;
       font-size: 1.1rem;
       border-radius: 50px;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 10px 10px;
       border: 2px solid #C76D00;
       transition: background 0.3s, color 0.3s, transform 0.3s;
       cursor: pointer;
     }
 
-    .guide-nav a:hover {
+    .guide-nav a:hover, .custom-nav button:hover {
       background: #C76D00;
       color: #ffffff;
       transform: translateY(-3px);
     }
 
-    .guide-nav a.active {
+    .guide-nav a.active, .custom-nav button.active {
       background: #C76D00;
       color: #ffffff;
     }
@@ -140,8 +138,15 @@
       display: block;
     }
 
+    .sub-section {
+      display: none;
+    }
+
+    .sub-section.active {
+      display: block;
+    }
+
     section h2 {
-      color: #ffffff;
       font-size: 1.8rem;
       margin-bottom: 10px;
     }
@@ -149,39 +154,6 @@
     section p {
       color: #ccc;
       line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 10px;
-      }
-
-      .main-content {
-        padding: 20px;
-        margin-bottom: 0;
-        border-radius: 0;
-      }
-
-      .play-store-link {
-        justify-content: center;
-      }
-
-      .guide-nav {
-        flex-direction: column;
-      }
-
-      .guide-nav a {
-        margin-bottom: 15px;
-      }
-
-      section {
-        padding: 15px;
-        margin-bottom: 20px;
-      }
-
-      .main-content h1 {
-        font-size: 2.5rem;
-      }
     }
 
     .back-to-top {
@@ -228,10 +200,11 @@
       </header>
 
       <div class="guide-nav">
-        <a id="btn-intro" class="active" onclick="showSection('intro', this)">Introduction</a>
-        <a id="btn-customization" onclick="showSection('customization', this)">Customization</a>
+        <a class="active" onclick="showSection('intro', this)">Introduction</a>
+        <a onclick="showSection('customization', this)">Customization</a>
       </div>
 
+      <!-- Introduction -->
       <section id="intro" class="active">
         <h2>Introduction</h2>
         <p>
@@ -240,12 +213,32 @@
         </p>
       </section>
 
+      <!-- Customization -->
       <section id="customization">
         <h2>Customization</h2>
-        <p>
-          Adjust colors, fonts, and add modules to make the theme truly yours. Learn how to make changes in
-          KLWP's editor and personalize your setup.
-        </p>
+
+        <div class="custom-nav">
+          <button onclick="showSub('wallpaper', this)" class="active">Wallpaper</button>
+          <button onclick="showSub('accent', this)">Accent Color</button>
+          <button onclick="showSub('apps', this)">Applications</button>
+          <button onclick="showSub('touch', this)">Touch Actions</button>
+        </div>
+
+        <div id="wallpaper" class="sub-section active">
+          <p>Learn how to change and personalize your wallpaper through KLWP layers and image modules.</p>
+        </div>
+
+        <div id="accent" class="sub-section">
+          <p>Pick an accent color that suits your vibe. This theme supports quick global color changes.</p>
+        </div>
+
+        <div id="apps" class="sub-section">
+          <p>Assign favorite apps to on-screen icons. Use touch triggers and shortcuts within KLWP.</p>
+        </div>
+
+        <div id="touch" class="sub-section">
+          <p>Customize touch actions, gestures, and what happens when you tap areas of the theme.</p>
+        </div>
       </section>
     </div>
   </div>
@@ -254,14 +247,18 @@
 
   <script>
     function showSection(id, el) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
 
-      document.querySelectorAll('.guide-nav a').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.guide-nav a').forEach(a => a.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function showSub(id, el) {
+      document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('.custom-nav button').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
     }
   </script>
