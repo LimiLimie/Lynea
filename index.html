@@ -221,45 +221,56 @@
 
       <div id="wallpaper" class="content-section">
         <h3>Wallpaper</h3>
-        <p>Learn how to change and personalize your wallpaper using KLWP image modules.</p>
+        <p>Learn how to change and personalize your wallpaper using KLWP image modules. You can easily upload your own images or choose from a variety of preloaded backgrounds. KLWP allows you to scale and position the image to perfectly fit your screen, giving you full control over your home screen design. Additionally, you can add a dynamic wallpaper effect using motion or parallax to give your theme a more immersive feel.</p>
+        <p>Make sure the image resolution matches your screen's resolution for the best visual experience. If you're using multiple wallpapers, you can configure them to change based on specific triggers like time of day, battery level, or gestures. This gives your home screen a fresh look whenever you interact with it.</p>
+        <p>Consider using a high-quality wallpaper with vibrant colors and subtle textures that complement the rest of your theme's design. You can also add overlays to blend the wallpaper with the rest of the UI elements for a seamless experience.</p>
       </div>
 
       <div id="accent" class="content-section">
         <h3>Accent Color</h3>
-        <p>Customize the accent color to match your theme's aesthetic using KLWP globals.</p>
+        <p>Customize the accent color to match your theme's aesthetic using KLWP globals. You can adjust the primary and secondary colors to fit your design preferences, whether you want a bold, vibrant theme or something more subtle and sleek. These colors can be applied to various elements of your theme, including buttons, icons, and borders.</p>
+        <p>KLWP also allows you to use color gradients, which can give your theme a modern touch. Choose from predefined color palettes or create your own by selecting custom colors for a unique design. You can also adjust the brightness and opacity of the accent color to create different effects based on your preferences.</p>
+        <p>If you’re aiming for a minimalistic look, stick to neutral or pastel shades. On the other hand, if you want something more energetic, vibrant tones like orange or neon hues can make your theme stand out.</p>
       </div>
 
       <div id="apps" class="content-section">
         <h3>Applications</h3>
-        <p>Assign apps to touch zones and icons for easy access from the home screen.</p>
+        <p>Assign apps to touch zones and icons for easy access from the home screen. KLWP lets you designate areas of your screen to launch specific applications with a tap or swipe. This makes it easier to open your most-used apps without cluttering the home screen with numerous icons.</p>
+        <p>To make things even more convenient, you can create app launchers that open multiple apps or perform specific actions like opening a website or sending a message. Set up dynamic icons that change based on certain conditions, such as the time of day, location, or current app usage.</p>
+        <p>Also, you can assign different icons to your apps, use dynamic icon packs, and even include app badge counts to give users more information right on the home screen.</p>
       </div>
 
       <div id="touch" class="content-section">
         <h3>Touch Actions</h3>
-        <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
+        <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior. You can assign different actions to various touch zones, including taps, swipes, and long presses. This allows you to interact with your home screen in a way that feels intuitive and suits your daily use.</p>
+        <p>For example, you can set up a swipe-up gesture to open your app drawer, or a long press on an icon to open a specific menu. KLWP also supports multi-touch gestures, allowing you to combine multiple gestures for more advanced actions. Create a smooth, responsive experience that is uniquely yours.</p>
+        <p>Consider implementing haptic feedback for certain touch actions to enhance the tactile experience, making it feel more satisfying when interacting with your home screen.</p>
       </div>
 
-      <!-- Play Store Icon Link -->
+      <!-- Play Store Icon-->
       <div class="playstore-link">
-        <a href="https://play.google.com/store/apps/details?id=your.package.name" target="_blank" rel="noopener">
-          <img src="playstore-icon.png" alt="Get it on Google Play">
+        <a href="https://play.google.com/store/apps/details?id=org.kustom.wallpaper" target="_blank">
+          <img src="playstore-icon.png" alt="KLWP on Play Store" />
         </a>
       </div>
+
+      <a href="#top" class="back-to-top" title="Back to Top"></a>
     </div>
   </div>
 
-  <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
-
   <script>
-    function toggleContent(sectionId, dotIndex) {
-      document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
+    function toggleContent(id, index) {
+      let sections = document.querySelectorAll('.content-section');
+      let dots = document.querySelectorAll('.dot');
+      let buttons = document.querySelectorAll('.button-item');
 
-      document.querySelectorAll('.button-item').forEach(btn => btn.classList.remove('active-button'));
-      document.querySelectorAll('.button-item')[dotIndex].classList.add('active-button');
+      sections.forEach((section) => section.classList.remove('active'));
+      dots.forEach((dot) => dot.classList.remove('active'));
+      buttons.forEach((button) => button.classList.remove('active-button'));
 
-      document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-      document.querySelectorAll('.dot')[dotIndex].classList.add('active');
+      document.getElementById(id).classList.add('active');
+      dots[index].classList.add('active');
+      buttons[index].classList.add('active-button');
     }
   </script>
 </body>
