@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lynea KLWP Guide</title>
-  <meta name="description" content="Official guide for the Lynea KLWP theme. Learn how to customize wallpapers, colors, apps, and gestures." />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet" />
   <style>
     html, body {
@@ -108,7 +107,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background-color: #888;
+      background-color: #555; /* darker for inactive */
       transition: background-color 0.3s ease;
     }
 
@@ -188,7 +187,7 @@
         <img src="lynea-mockup.png" alt="Lynea Theme" class="theme-image" loading="lazy" />
       </header>
 
-      <!-- Horizontal Scrollable Buttons -->
+      <!-- Horizontal Scrollable Section -->
       <div class="horizontal-scroll-container" id="buttonRow">
         <button class="button-item active-button" onclick="toggleContent('intro', 0)">Introduction</button>
         <button class="button-item" onclick="toggleContent('wallpaper', 1)">Wallpaper</button>
@@ -197,7 +196,7 @@
         <button class="button-item" onclick="toggleContent('touch', 4)">Touch Actions</button>
       </div>
 
-      <!-- Dots -->
+      <!-- Dots under buttons -->
       <div class="dots" id="dots">
         <div class="dot active"></div>
         <div class="dot"></div>
@@ -206,7 +205,7 @@
         <div class="dot"></div>
       </div>
 
-      <!-- Sections -->
+      <!-- Content Sections -->
       <div id="intro" class="content-section active">
         <h3>Introduction</h3>
         <p>
@@ -240,7 +239,7 @@
         <p>Set up gestures and tap actions using KLWP's touch settings to personalize behavior.</p>
       </div>
 
-      <!-- Play Store Icon -->
+      <!-- Play Store Icon Link -->
       <div class="playstore-link">
         <a href="https://play.google.com/store/apps/details?id=your.package.name" target="_blank" rel="noopener">
           <img src="playstore-icon.png" alt="Get it on Google Play">
@@ -249,10 +248,8 @@
     </div>
   </div>
 
-  <!-- Back to Top -->
   <a href="#top" class="back-to-top" title="Back to Top" aria-label="Back to Top"></a>
 
-  <!-- Toggle Script -->
   <script>
     function toggleContent(sectionId, dotIndex) {
       document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
